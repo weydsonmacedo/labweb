@@ -10,16 +10,6 @@ CREATE SCHEMA IF NOT EXISTS `cautela` DEFAULT CHARACTER SET utf8 ;
 USE `cautela` ;
 
 -- -----------------------------------------------------
--- Table `cautela`.`table1`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `cautela`.`table1` ;
-
-CREATE TABLE IF NOT EXISTS `cautela`.`table1` (
-)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `cautela`.`cabo_armeiro`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `cautela`.`cabo_armeiro` ;
@@ -102,7 +92,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `cautela`.`acessorio` ;
 
 CREATE TABLE IF NOT EXISTS `cautela`.`acessorio` (
+  `id_acessorio` INT NOT NULL,
   `id_material` INT NULL,
+  PRIMARY KEY (`id_acessorio`)),
   INDEX `FK_material_acessorio_idx` (`id_material` ASC),
   CONSTRAINT `FK_material_acessorio`
     FOREIGN KEY (`id_material`)
@@ -131,9 +123,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `cautela`.`reserva_material` ;
 
 CREATE TABLE IF NOT EXISTS `cautela`.`reserva_material` (
-  `id_reserva` INT NULL,
-  `id_material` INT NULL,
-  `quantidade` INT NULL,
+  `id_reserva` INT NOT NULL,
+  `id_material` INT NOT NULL,
+  `quantidade` INT NOT NULL,
   PRIMARY KEY (`id_reserva`, `id_material`),
   INDEX `FK_reserva_material_idx` (`id_material` ASC),
   CONSTRAINT `FK_reserva_material`
